@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
 
   get "/groups" do
     if logged_in?
-      @groups = Group.all_except_current_user
+      # @groups = Group.all_except_current_user
     else
       @groups = Group.all
     end

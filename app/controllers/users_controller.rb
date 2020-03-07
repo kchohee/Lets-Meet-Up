@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  get "/users"do
+  "Please work"
+end
   get "/users/:id" do
     if logged_in?
     erb :"/users/show"
@@ -11,7 +14,7 @@ class UsersController < ApplicationController
     if logged_in?
       redirect "/users/#{user.id}" 
     else
-      erb :"/users/signup"
+      erb :"/users/new"
     end
   end
 
@@ -29,20 +32,21 @@ class UsersController < ApplicationController
 
   get '/login' do
     if logged_in?
-      redirect "/users/{#user,id}" 
+      @user = User.find_by(:id=>session[:user_id])
+      redirect "/users/#{@user.id}" 
     else
       erb :'/users/login'
     end
   end
   
   post '/login' do
-    user = User.find_by(:email => params[:email])
-    if user != nil
-      session[:user_id] = user.id
-      redirect "/users.#{user.id}"
-    else
-      erb :"/users/error"
-    end
+     @user = User.find_by(:email => params[:email])
+      if @user != nil
+     session[:user_id] = @user.id
+       redirect "/users/#{@user.id}"
+     else
+       erb :"/users/error"
+     end
   end
 
   get '/logout' do
