@@ -18,16 +18,20 @@ get "/posts/new" do
 end
 
 post "/posts/new" do
-    if logged_in?
+    if !params[:content].empty?
         @user = User.find_by(:id=>session[:user_id])
-        @post = Post.create(params)
-        @post.published = Time.new
-        @post.user = @user
-        @post.save
-        redirect "/posts/#{@post.id}"
+        if logged_in?
+            @post = Post.create(params)
+            @post.published = Time.new
+            @post.user = @user
+            @post.save
+            redirect "/posts/#{@post.id}"
+        else
+            erb :"posts/error"
+        end
     else
-        erb :"posts/error"
-     end
+        redirect "/login"
+    end
 end
 
 get "/posts/:id" do

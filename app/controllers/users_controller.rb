@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
 
   get '/login' do
-    @group = Group.all.last
+     @group = Group.all.last
     if logged_in?
       @user = User.find_by(:id=>session[:user_id])
       redirect "/users/#{@user.id}" 
@@ -39,13 +39,17 @@ class UsersController < ApplicationController
   end
   
   post '/login' do
-     @user = User.find_by(:email => params[:email])
+    if !params[:email].empty? && !params[:password].empty?
+      @user = User.find_by(:email => params[:email])
       if @user != nil
-     session[:user_id] = @user.id
-       redirect "/users/#{@user.id}"
+        session[:user_id] = @user.id
+        redirect "/users/#{@user.id}"
      else
        erb :"/users/error"
      end
+    else
+      redirect "/login"
+    end
   end
 
   get '/logout' do
