@@ -64,14 +64,27 @@ end
 
 get "/posts/:id/delete" do
     if logged_in?
-        erb :"/post/delete"
+        @user = User.find_by(:id=>session[:user_id])
+        @post = Post.find_by(:id=>params[:id])
+        erb :"/posts/delete"
     else
         redirect "/login"
     end
 end
 
 delete "/posts/:id/delete" do
-    
+    if logged_in?
+        @user = User.find_by(:id=>session[:user_id])
+        @post = Post.find_by(:id=>params[:id])
+        if @post.user == @user
+            @post.destroy
+             redirect "/posts"
+        else
+            erb :"/posts/error"
+        end
+    else
+        redirect "/login"
+    end
 end
 
 end

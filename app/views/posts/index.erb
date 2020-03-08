@@ -1,11 +1,11 @@
 <h1> Here are all the post </h1>
 <ul>
 <% @posts.each do |post|%>
-<li><b><%=post.user_id%><b></li>
+<li><b><%=post.user.name%><b></li>
 <li><b><%=post.content%><b></li>
 <li><b>Content:</b> <%=post.content%></li>
-<% if post.user_id == user.id %>
-<a href=>"/posts/<%post.id%>/edit">Edit</a>
+<% if post.user == @user %>
+<a href="/posts/<%post.id%>/edit">Edit</a>
 <br>
 <%end%>
 <%end%>

@@ -1,0 +1,5 @@
+By clicking delete you will be discarding this post. Please make sure this is what you would like to do as it can not be undone.
+<form action="/posts/<%= @post.id %>/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete post">
+</form>
