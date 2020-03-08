@@ -7,4 +7,5 @@ end
 use Rack::MethodOverride
 use GroupsController
 use UsersController
+use PostsController
 run ApplicationController

@@ -1,0 +1,12 @@
+<h1> The contents of your post are the following: </h1>
+<ul>
+<li><b><%=@post.user_id%><b></li>
+<li><b><%=@post.content%><b></li>
+<li><b>Content:</b> <%=@post.content%></li>
+<% if @post.user_id == @user.id %>
+<a href=>"/posts/<%@post.id%>/edit">Edit</a>
+<a href=>"posts/<%@post.id%>/delete">Delete</a>
+<br>
+<%end%>
+<%end%>
+</ul>

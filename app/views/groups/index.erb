@@ -46,10 +46,11 @@
        
         <% @groups.each do |group|%>
           <ul>
-          <li><b><%=group.name%><b></li><br>
-          <li><b>Bio:</b> <%=group.bio %>
-          <%# form to join group for each group %>
-          </ul></p>
+            <li><b><%=group.name%><b></li>
+            <li> <a href="/groups/<%=group.id%>/join">Join!</a></li>
+            <li><b>Bio:</b> <%=group.bio %></li>
+            <br>
+          </ul>
         
         <%end%>
       <%end%>

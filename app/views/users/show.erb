@@ -7,9 +7,9 @@
         <% else %>
           <p>The group you belong to is</p>
             <ul>
-              <li><a href="/groups/<%=user.group.id%>"><b><%=user.group.name%><b></a></li><br>
+              <li><a href="/groups/<%=@user.group.id%>"><b><%=@user.group.name%><b></a></li><br>
             <li><b>Bio:</b></li>
-            <li><%=user.group.bio %><b></li>
+            <li><%=@user.group.bio %><b></li>
           </ul>
         <%end%>
       </div>

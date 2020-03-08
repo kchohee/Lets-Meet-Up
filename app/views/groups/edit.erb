@@ -1,1 +1,14 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Edit your groups information</h1>
+<form action="/groups/<%=@group.id%>/edit" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <label for="name"><strong>Name: </strong> 
+    <br>
+    <input type="text" id="name" name="name" value="<%=@group.name%>"></label>
+    <br>
+    <label for="bio"><strong>Bio:</strong>
+    <br>
+    <textarea type="text" id="bio" name="bio" rows="10" cols="50"><%=@group.bio%></textarea></label>
+    <br>
+    <button type="submit" value="submit" name="submit"><strong>Update!<strong></button>
+</form> 
+<a href="/groups/<%=@group.id%>">Return to page</a>
