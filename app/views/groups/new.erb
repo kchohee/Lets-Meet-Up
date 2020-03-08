@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Welcome, <%=@user.name%> </h1> 
+    
+    <% if @user.group == nil%>  
+    
+      <div class="content">
+        <h2>Go ahead and create your group</h2>
+        <form action="/groups" method="Post">
+          <label for="name"><strong>Name: </strong> 
+          <br>
+          <input type="text" id="name" name="name" placeholder="Your group's name here"></label>
+          <br>
+          <label for="bio"><strong>Bio:</strong>
+          <br>
+          <textarea type="text" id="bio" name="bio" placeholder="Tell us about your group please." rows="10" cols="50"></textarea></label>
+          <br>
+          <button type="submit" value="submit"><strong>Submit!<strong></button>
+        </form>
+      </div>
+        
+    <%else%>
+
+      <div class="content">
+        <h2>Wait just a minute...</h2>
+        <p> I do apologize but you cannot create a group while you are in a group. Creators must be apart of their group (or at least when they first start it). Since you can only be a member of one group at a time. You would need to leave your current group first.</p>
+        <h3>Leave Group?</h3>
+        <p>To leave your group please visit their page and click the "Leave" button on the groups page. The group you are currently apart of is <a href="/groups/<%=@user.group.id%>"><%=@user.group.name%></a> .
+      </div>
+        
+    <%end%>
+      
+  </div>
+</div>

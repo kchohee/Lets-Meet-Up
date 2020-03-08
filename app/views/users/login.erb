@@ -1,12 +1,25 @@
-<h1> Login: </h1>
-<form action='/login' method="POST">
- <label for ="email"><strong>Email:</strong>
- <input type="text" id="email" name="email" placeholder="Your Email Please">
- </label>
- <br>
- <label for="password"><strong>Password:</strong>
- <input type="password" id="password" name="password" placeholder="Password">
- </label>
- <br>
-<input type=submit value=LogIn id=submit> <a href="/signup">Not a Member?</a>
-</form> 
+<div class="container"> 
+    <div class="col-md-8 col-md-offset-2">
+        <h2>Welcome Back!</h2>
+        <div class="content">
+            <p>We are so glad to see you returning! Go ahead and login bellow!<p>
+            <h3> Login: </h3>
+            <form action='/login' method="POST">
+                <label for ="email"><strong>Email:</strong>
+                <input type="text" id="email" name="email" placeholder="Your Email Please"></label>
+                <br>
+                <label for="password"><strong>Password:</strong>
+                <input type="password" id="password" name="password" placeholder="Password"></label>
+                <br>
+                <input type=submit value=LogIn id=submit> <a href="/signup">Not a Member?</a>
+            </form> 
+        </div>
+        <div class="sidebar">
+            <h2>The newest group created:</h2>
+            <ul>
+                <li><b>Name:</b><%=@group.name%></li><br>
+                <li><b>Bio:</b> <%=@group.bio %></li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -10,6 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
+    @group = Group.all.last
     erb :welcome
   end
   

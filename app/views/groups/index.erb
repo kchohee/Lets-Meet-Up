@@ -1,32 +1,69 @@
-<div class="container">
+<% if !logged_in?%>
   
-  <div class="col-md-8 col-md-offset-2">
-    <h2>Check out alll our groups!</h2>
-
+  <div class="container">
+    <div class="col-md-8 col-md-offset-2">
+      <h2>Check out all our groups!</h2>
+      <p> <strong>Attention</strong>! You can only be a member of one group and can only view a groups page if you are a member. You do have the ability to leave groups and join them as you wish. Please keep that in mind as it is best to look over all options before you join.</p>
+    </div>
     <div class="content">
       <% @groups.each do |group|%>
-      <ul>
-        <li><a href="/group/<%=group.id%>"><b><%=group.name%><b></a></li><br>
+        <ul>
+        <li><b><%=group.name%><b></a></li><br>
         <li><b>Bio:</b> <%=group.bio %></li>
-      </ul></p>
+        </ul>
       <%end%>
     </div>
-
     <div class="sidebar">
       <h3>Login</h3>
       <ul>
         <form action='/login' method="post">
-        <li><label for ="email"><strong>Email:</strong><b></li>
-        <li><input type="text" id="email" name="email" placeholder="Your Email Please">
- </label><b></li>
-        <li><label for="password"><strong>Password:</strong><b></li>
-        <li><input type="password" id="password" name="password" placeholder="Password">
- </label><b></li>
- <input type=submit value=LogIn id=submit>
-</form><a href="/signup">Sign Up</a>
-        <li><b></li>
+          <li><label for ="email"><strong>Email:</strong><b></li>
+          <li><input type="text" id="email" name="email" placeholder="Your Email Please"></label><b></li>
+          <li><label for="password"><strong>Password:</strong><b></li>
+          <li><input type="password" id="password" name="password" placeholder="Password"></label><b></li>
+          <input type=submit value=LogIn id=submit>
+        </form><a href="/signup">Sign Up</a><li><b></li>
       </ul>
     </div>
 
+<%else%>
+  
+  <div class="container">
+    <div class="col-md-8 col-md-offset-2">
+      <h2>Check out all our groups!</h2>
+      <div class="content">
+      
+      <% if @user.group != nil %>
+        
+        <% @groups.each do |group|%>
+          <ul>
+          <li><b><%=group.name%><b></li><br>
+          <li><b>Bio:</b> <%=group.bio %></li>
+          </ul>
+        <%end%>
+      
+      <%else%>
+       
+        <% @groups.each do |group|%>
+          <ul>
+          <li><b><%=group.name%><b></li><br>
+          <li><b>Bio:</b> <%=group.bio %>
+          <%# form to join group for each group %>
+          </ul></p>
+        
+        <%end%>
+      <%end%>
+      
+      </div>
+      <div class="sidebar">
+            <h3>Attention:</h3>
+            <p> You can only be a member of one group and can only view a groups page if you are a member. You do have the ability to leave groups and join them as you wish. Please keep that in mind as it is best too look over all options before you join.</p>
+      </div>
+    </div>
   </div>
-</div>
+  
+<%end%>
+
+
+
+

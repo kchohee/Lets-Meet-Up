@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
-  get "/users"do
-  "Please work"
-end
   get "/users/:id" do
     if logged_in?
+    @user = User.find_by(:id=>session[:user_id])
     erb :"/users/show"
     else
       redirect "/login"
@@ -31,6 +29,7 @@ end
 
 
   get '/login' do
+    @group = Group.all.last
     if logged_in?
       @user = User.find_by(:id=>session[:user_id])
       redirect "/users/#{@user.id}" 

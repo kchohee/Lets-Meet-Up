@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-    belongs_to :groups
-    has_many :post
+    belongs_to :group
+    has_many :posts
     has_secure_password
 end

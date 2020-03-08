@@ -15,19 +15,38 @@
   </head>
   <body>
     <div class="wrapper">
-    <div class="topnav">
-      <% if logged_in?%>
-            <a href="/">Home</a>
-            <a href="/groups">Join a Group</a>
-            <a href="/groups/new">Create a Group</a>
-            <a href="/logout">Logout</a>
+      <div class="topnav">
+       
+        <% if !logged_in?%>
+          
+          <a href="/signup">Sign Up</a>
+          <a href="/login">Login</a>
+          <a href="/groups">Our Groups</a>
+          <a href="/">Home</a>
+        
         <%else%>
-            <a href="/">Home</a>
-            <a href="/signup">Sign Up</a>
-            <a href="/login">Login</a>
-            <a href="/groups">Our Groups</a>
-      <%end%>
-</div>
+         
+          <% user = User.find_by(:id=>session[:user_id])%>
+           
+            <% if user.group != nil %>
+            
+              <a href="/">About</a>
+              <a href="/logout">Logout</a>
+              <a href="/groups/<%=user.group.id%>">Group page</a>
+              <a href="/users/<%=user.id%>">Profile</a>
+            
+            <%else%>
+            
+              <a href="/">About</a>
+              <a href="/logout">Logout</a>
+              <a href="/groups">Join a Group</a>
+              <a href="/groups/new">Create a Group</a>
+              <a href="/users/<%=user.id%>">Profile</a>
+            
+            <%end %>
+        <%end%>
+     
+      </div>
 
         <%= yield %>
 
