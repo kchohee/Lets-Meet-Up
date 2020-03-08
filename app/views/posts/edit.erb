@@ -1,0 +1,9 @@
+<h1>Edit a post!</h1>
+<form action="/posts/<%=@post.id%>/edit" method="post">
+<input type="hidden" name="_method" value="patch">
+<label for="content"><strong>Content: </strong</label>
+<br>
+<textarea type="text" id="content" name="content" placeholder="Enter what you would like your post to say!" rows="10" cols="50"><%=@post.content%></textarea></label>
+<br>
+<button type="submit" value="submit"><strong>Edit!<strong></button>
+</form>
