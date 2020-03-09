@@ -1,24 +1,28 @@
 <div class="container"> 
     <div class="col-md-8 col-md-offset-2">
-        <h2>Welcome Back!</h2>
+        <h1><strong>Lets-meet</strong></h1>
         <div class="content">
+            <h2>Welcome back!</h2>
             <p>We are so glad to see you returning! Go ahead and login bellow!<p>
-            <h3> Login: </h3>
+            <h2> Login: </h2>
+            <ul>
             <form action='/login' method="POST">
-                <label for ="email"><strong>Email:</strong>
-                <input type="text" id="email" name="email" placeholder="Your Email Please"></label>
+                <li><label for ="email"><strong><em>Email: </em></strong></li>
+                <li><input type="text" id="email" name="email" placeholder="Your Email Please"></label></li>
+                <li><label for="password"><strong><em>Password: </em></strong></li>
+                <li><input type="password" id="password" name="password" placeholder="Password"></label></li>
                 <br>
-                <label for="password"><strong>Password:</strong>
-                <input type="password" id="password" name="password" placeholder="Password"></label>
-                <br>
-                <input type=submit value=LogIn id=submit> <a href="/signup">Not a Member?</a>
+                <li><input type=submit value=LogIn id=submit> <a href="/signup"><strong>Not a Member?</strong></a></li>
             </form> 
+            </ul>
         </div>
         <div class="sidebar">
-            <h2>The newest group created:</h2>
+            <h3>The newest group created:</h3>
             <ul>
-                <li><b>Name:</b><%=@group.name%></li><br>
-                <li><b>Bio:</b> <%=@group.bio %></li>
+                <li><strong><em>Name: </em></strong></li>
+                <li><%=last_group.name%></li>
+                <li><strong><em>Bio: </em></strong></li>
+                <li><%=last_group.bio %></li>
             </ul>
         </div>
     </div>

@@ -1,32 +1,35 @@
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
-    <h2>Uh-oh</h2>
+    <h1>Houston we have a problem!</h1>
     <div class="content">
+      <h2>Uh-oh</h2>
         <p>It looks like there was an error with the information you gave use. Please either sign-in again or sign up below<p>
         <h3> Sign Up:</h3>
+        <ul>
         <form action="/signup" method="post">
-            <label for="name"><strong>Name:</strong>
-            <input type="text" id="name" name="name" placeholder="Your Name Please"></label>
+            <li><label for="name"><strong><em>Name: </em></strong></li>
+            <li><input type="text" id="name" name="name" placeholder="Your Name Please"></label></li>
             <br>
-            <label for ="email"><strong>Email</strong>
-            <input type="text" id="email" name="email" placeholder="Your Email Please"></label>
+            <li><label for ="email"><strong><em>Email: </em></strong></li>
+            <li><input type="text" id="email" name="email" placeholder="Your Email Please"></label></li>
             <br>
-            <label for="password"><strong>Password</strong>
-            <input type="password" id="password" name="password" placeholder="Password"></label>
+            <li><label for="password"><strong><em>Password: </em></strong></li>
+            <li><input type="password" id="password" name="password" placeholder="Password"></label></li>
             <br>
-            <button type="submit" value="submit"><strong>Sign Up</strong></button> 
+            <li><button type="submit" value="submit"><strong>Sign Up</strong></button></li>
         </form> 
+        </ul>
     </div>
     <div class="sidebar">
       <h3>Login:</h3>
       <ul>
         <form action='/login' method="post">
-          <li><label for ="email"><strong>Email:</strong><b></li>
-          <li><input type="text" id="email" name="email" placeholder="Your Email Please"></label><b></li>
-          <li><label for="password"><strong>Password:</strong><b></li>
-          <li><input type="password" id="password" name="password" placeholder="Password"></label><b></li>
-          <input type=submit value=LogIn id=submit>
-        </form><a href="/users/signup">Sign Up</a><li><b></li>
+          <li><label for ="email"><strong><em>Email: </em></strong></li>
+          <li><input type="text" id="email" name="email" placeholder="Your Email Please"></label></li>
+          <li><label for="password"><strong><em>Password: </em></strong></li>
+          <li><input type="password" id="password" name="password" placeholder="Password"></label></li>
+          <li><button type="submit" value="LogIn" id="submit"><strong>LogIn</strong></button> <a href="/users/signup">Sign Up</a>
+        </form>
       </ul>
     </div>
   </div>

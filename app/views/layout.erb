@@ -25,15 +25,15 @@
           <a href="/">Home</a>
         
         <%else%>
-         
-          <% user = User.find_by(:id=>session[:user_id])%>
-           
-            <% if user.group != nil %>
+     
+            <% if current_user.group != nil %>
             
               <a href="/">About</a>
               <a href="/logout">Logout</a>
-              <a href="/groups/<%=user.group.id%>">Group page</a>
-              <a href="/users/<%=user.id%>">Profile</a>
+              <a href="/groups">All Groups</a>
+              <a href="/posts">Post</a>
+              <a href="/groups/<%=current_user.group.id%>">Group page</a>
+              <a href="/users/<%=current_user.id%>">Profile</a>
             
             <%else%>
             
@@ -41,7 +41,7 @@
               <a href="/logout">Logout</a>
               <a href="/groups">Join a Group</a>
               <a href="/groups/new">Create a Group</a>
-              <a href="/users/<%=user.id%>">Profile</a>
+              <a href="/users/<%=current_user.id%>">Profile</a>
             
             <%end %>
         <%end%>

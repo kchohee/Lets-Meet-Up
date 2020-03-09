@@ -1,11 +1,28 @@
-<h2> The contents of your post are the following: </h2>
-<ul>
-    <li><b><%=@post.user.name%><b></li>
-    <li><b><%=@post.published%><b></li>
-    <li><b>Content:</b> <%=@post.content%></li>
-    <% if @post.user == @user %>
-<a href="/posts/<%=@post.id%>/edit">Edit</a>
-<a href="/posts/<%=@post.id%>/delete">Delete</a>
-<br>
-<%end%>
-</ul>
+<div class="container"> 
+    <div class="col-md-8 col-md-offset-2">
+        <h2>The contents of your post are the following:</h2>
+        <div class="content">
+            <ul>
+                <li><%=current_post.published%></li>
+                <li><strong><em><%=current_post.user.name%></em></strong></li>
+                <li><strong><em>Content: </em></strong><%=current_post.content%></li>
+                
+                <% if current_post.user == current_user %>
+                <li><a href="/posts/<%=current_post.id%>/edit">Edit</a></li>
+                <li><a href="/posts/<%=current_post.id%>/delete">Delete</a></li>
+                <br>
+                <%end%>
+
+            </ul>
+        </div>
+        <div class="sidebar">
+            <h2>The newest post created:</h2>
+            <ul>
+                <li><%=last_post.published%></li>
+                <li><strong><em><%=last_post.user.name%></em></strong></li>
+                <li><li><strong><em>Post: </em></strong><%=last_post.content%></li>
+                <br>
+            </ul>
+        </div>
+    </div>
+</div>

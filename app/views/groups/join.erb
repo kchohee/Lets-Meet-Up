@@ -1,7 +1,13 @@
-<h1> Attention</h1>
-<p> By selecting "Join" you are going to be joining this group. Any group you were apart of before this group you will leave. </p>
-
- <form action="/groups/<%= @group.id %>/join" method="post">
-    <input type="hidden" name="_method" value="patch">
-    <button type="submit" value="submit"> Join!</button>
-</form>
+<div class="container"> 
+    <div class="col-md-8 col-md-offset-2">
+        <h1><strong>Before we go forward....</strong></h1>
+        <div class="content">
+            <h2><strong><em>Attention</em></strong></h2>
+            <p>By selecting "Join" you are going to be joining this group. Any group you were apart of before this group you will leave.</P>
+            <form action="/groups/<%= current_group.id %>/join" method="post">
+                <input type="hidden" name="_method" value="patch">
+                <button type="submit" value="submit"> Join!</button>
+            </form>
+        </div>
+    </div>
+</div>

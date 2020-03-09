@@ -1,5 +1,13 @@
-By clicking delete you will be discarding this post. Please make sure this is what you would like to do as it can not be undone.
-<form action="/posts/<%= @post.id %>/delete" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete post">
-</form>
+<div class="container"> 
+    <div class="col-md-8 col-md-offset-2">
+        <h1><strong>Before you do...</strong></h1>
+        <div class="content">
+            <h2><strong><em>Attention</em></strong></h2>
+            <p>By clicking delete you will be discarding this post. Please make sure this is what you would like to do as it can not be undone.</p>
+            <form action="/posts/<%= current_post.id %>/delete" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input type="submit" value="Delete post">
+            </form>
+        </div>
+    </div>
+</div>

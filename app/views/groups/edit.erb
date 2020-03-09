@@ -1,14 +1,22 @@
-<h1>Edit your groups information</h1>
-<form action="/groups/<%=@group.id%>/edit" method="post">
-    <input type="hidden" name="_method" value="patch">
-    <label for="name"><strong>Name: </strong> 
-    <br>
-    <input type="text" id="name" name="name" value="<%=@group.name%>"></label>
-    <br>
-    <label for="bio"><strong>Bio:</strong>
-    <br>
-    <textarea type="text" id="bio" name="bio" rows="10" cols="50"><%=@group.bio%></textarea></label>
-    <br>
-    <button type="submit" value="submit" name="submit"><strong>Update!<strong></button>
-</form> 
-<a href="/groups/<%=@group.id%>">Return to page</a>
+<div class="container"> 
+    <div class="col-md-8 col-md-offset-2">
+        <h1><strong>Edit</strong></h1>
+        <div class="content">
+            <h2>Edit your groups information</h2>
+            <ul>
+            <form action="/groups/<%=current_group.id%>/edit" method="post">
+                <li><input type="hidden" name="_method" value="patch"></li>
+                <li><label for="name"><strong><em>Name: </em></strong> </li>
+                <br>
+                <li><input type="text" id="name" name="name" value="<%=current_group.name%>"></label></li>
+                <br>
+                <li><label for="bio"><strong><em>Bio: </em></strong></li>
+                <br>
+                <li><textarea type="text" id="bio" name="bio" rows="10" cols="50"><%=current_group.bio%></textarea></label></li>
+                <br>
+                <li><button type="submit" value="submit" name="submit"><strong>Update!<strong></button></li>
+            </form> 
+            <a href="/groups/<%=current_group.id%>">Return to page</a>
+        </div>
+    </div>
+</div>

@@ -1,8 +1,19 @@
-<h1>Create a post!</h1>
-<form action="/posts/new" method="post">
-<label for="content"><strong>Content: </strong</label>
-<br>
-<textarea type="text" id="content" name="content" placeholder="Enter what you would like your post to say!" rows="10" cols="50"></textarea></label>
-<br>
-<button type="submit" value="submit"><strong>Post!<strong></button>
-</form>
+<div class="container"> 
+    <div class="col-md-8 col-md-offset-2">
+        <h1><strong>Lets-Meet</strong></h1>
+        <div class="content">
+            <h2>Create a post</h2>
+            <p>We are glad to have you joining the family! Here we offer comunity with a focus. Create an account to join like minded indiviuals near you!</p>
+            <br>
+            <h3><strong><em>Sign up: </strong></em></h3>
+            <ul>
+            <form action="/posts/new" method="post">
+                <li><label for="content"><strong><em>Content: </em></strong></label></li>
+                <br>
+                <li><textarea type="text" id="content" name="content" placeholder="Enter what you would like your post to say!" rows="10" cols="50"></textarea></label></li>
+                <br>
+                <li><button type="submit" value="submit"><strong>Post!<strong></button></li>
+            </form>
+        </div>
+    </div>
+</div>

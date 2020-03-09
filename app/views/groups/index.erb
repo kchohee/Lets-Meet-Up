@@ -2,27 +2,29 @@
   
   <div class="container">
     <div class="col-md-8 col-md-offset-2">
-      <h2>Check out all our groups!</h2>
-      <p> <strong>Attention</strong>! You can only be a member of one group and can only view a groups page if you are a member. You do have the ability to leave groups and join them as you wish. Please keep that in mind as it is best to look over all options before you join.</p>
+      <h1>Our group catalog:</h1>
     </div>
     <div class="content">
-      <% @groups.each do |group|%>
+    <h2><em><strong>Attention!</strong></em></h2>
+    <p>You can only be a member of <strong><em>one</em></strong> group and can only view a groups page if you are a member. You do have the ability to leave groups and join new ones as you wish. Please keep that in mind as it is best to look over all options before you join!</p>
+      <%all_groups.each do |group|%>
         <ul>
-        <li><b><%=group.name%><b></a></li><br>
-        <li><b>Bio:</b> <%=group.bio %></li>
+        <li><strong><em><%=group.name%></em></strong></li>
+        <li><strong><em>Bio: </em></strong><%=group.bio%></li>
+        <br>
         </ul>
       <%end%>
     </div>
     <div class="sidebar">
-      <h3>Login</h3>
+      <h3>Login:</h3>
       <ul>
         <form action='/login' method="post">
-          <li><label for ="email"><strong>Email:</strong><b></li>
+          <li><label for ="email"><strong><em>Email: </em></strong></li>
           <li><input type="text" id="email" name="email" placeholder="Your Email Please"></label><b></li>
-          <li><label for="password"><strong>Password:</strong><b></li>
-          <li><input type="password" id="password" name="password" placeholder="Password"></label><b></li>
+          <li><label for="password"><strong><em>Password: </em></strong></li>
+          <li><input type="password" id="password" name="password" placeholder="Password"></label></li>
           <input type=submit value=LogIn id=submit>
-        </form><a href="/signup">Sign Up</a><li><b></li>
+        </form><a href="/signup"><strong>Sign Up</strong></a></li>
       </ul>
     </div>
 
@@ -30,29 +32,21 @@
   
   <div class="container">
     <div class="col-md-8 col-md-offset-2">
-      <h2>Check out all our groups!</h2>
+      <h1>Check out all our groups!</h1>
       <div class="content">
       
-      <% if @user.group != nil %>
-        
-        <% @groups.each do |group|%>
-          <ul>
-          <li><b><%=group.name%><b></li><br>
-          <li><b>Bio:</b> <%=group.bio %></li>
-          </ul>
+      <% if current_user.group != nil %>
+        Keep in mind if you click join it will remove you from your current group.
+        <br>
         <%end%>
-      
-      <%else%>
-       
-        <% @groups.each do |group|%>
+       <br>
+        <% all_groups.each do |group|%>
           <ul>
-            <li><b><%=group.name%><b></li>
-            <li> <a href="/groups/<%=group.id%>/join">Join!</a></li>
-            <li><b>Bio:</b> <%=group.bio %></li>
+            <li><em><strong><%=group.name%></strong></em> <a href="/groups/<%=group.id%>/join">Join!</a></li>
+            <li><strong><em>Bio: </strong></em> <%=group.bio %></li>
             <br>
           </ul>
-        
-        <%end%>
+
       <%end%>
       
       </div>

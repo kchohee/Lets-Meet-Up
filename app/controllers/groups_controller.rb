@@ -1,13 +1,12 @@
 class GroupsController < ApplicationController
 
   get "/groups" do
-      @groups = Group.all
     erb :"groups/index"
   end
 
   get "/groups/new" do
     if logged_in?
-      @user = User.find_by(:id=>session[:user_id])
+      current_user
       erb :"/groups/new"
     else
       redirect "/login"
@@ -15,21 +14,16 @@ class GroupsController < ApplicationController
   end
 
   post "/groups" do
-    if !params[:name].empty? && !params[:bio.empty?]
-      @group = Group.create(params)
-      @user = User.find_by(:id=>session[:user_id])
-      @user.group = @group
-      @user.save
-      redirect "/groups/#{@group.id}"
+    if valid_create_group?
+      create_group
+      redirect "/groups/#{current_group.id}"
     else
-      @user = User.find_by(:id=>session[:user_id])
       erb :"/groups/error"
     end
   end
 
   get "/groups/:id" do
     if logged_in?
-      @user = User.find_by(:id=>session[:user_id])
       erb :"/groups/show"
     else
       redirect"/login"
@@ -38,7 +32,6 @@ class GroupsController < ApplicationController
 
   get "/groups/:id/edit" do
     if logged_in?
-      @group = Group.find_by(params[:id])
       erb :"/groups/edit"
     else
       redirect "/login"
@@ -47,11 +40,8 @@ class GroupsController < ApplicationController
 
   patch "/groups/:id/edit" do
     if logged_in?
-      @group = Group.find_by(params[:id])
-      @group.name = params[:name]
-      @group.bio = params[:bio]
-      @group.save
-      redirect "/groups/#{@group.id}"
+      update_group
+      redirect "/groups/#{current_group.id}"
     else
       redirect "/login"
     end
@@ -59,8 +49,6 @@ class GroupsController < ApplicationController
   
   get "/groups/:id/join" do
     if logged_in?
-      @user = User.find_by(:id=>session[:user_id])
-      @group = Group.find_by(params[:id])
         erb :"/groups/join"
     else
       redirect "/login"
@@ -69,14 +57,24 @@ class GroupsController < ApplicationController
 
   patch "/groups/:id/join" do
      if logged_in? 
-      @user = User.find_by(:id=>session[:user_id])
-      @group = Group.find_by(params[:id])
-      @user.group = @group
-      @user.save
-      redirect "/groups/#{@user.group.id}"
+      join_group
+      redirect "/groups/#{current_user.group.id}"
      else
       redirect "/login"
      end
     end
+
+    patch "/groups/:id/leave" do
+      if logged_in?
+        if users_group?
+          leave_group
+          redirect "/users/#{current_user.id}"
+        else 
+          redirect "/groups"
+        end
+      else 
+        redirect "/login"
+    end
+  end
 
 end

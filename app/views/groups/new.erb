@@ -1,22 +1,24 @@
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
-    <h1>Welcome, <%=@user.name%> </h1> 
+    <h1>Hey <%=current_user.name%>!</h1> 
     
-    <% if @user.group == nil%>  
+    <% if current_user.group == nil%>  
     
       <div class="content">
         <h2>Go ahead and create your group</h2>
+        <ul>
         <form action="/groups" method="Post">
-          <label for="name"><strong>Name: </strong> 
+          <li><label for="name"><strong><em>Name: </em></strong></li>
           <br>
-          <input type="text" id="name" name="name" placeholder="Your group's name here"></label>
+          <li><input type="text" id="name" name="name" placeholder="Your group's name here"></label>
           <br>
-          <label for="bio"><strong>Bio:</strong>
+          <li><label for="bio"><strong><em>Bio: </em></strong></li>
           <br>
-          <textarea type="text" id="bio" name="bio" placeholder="Tell us about your group please." rows="10" cols="50"></textarea></label>
+          <li><textarea type="text" id="bio" name="bio" placeholder="Tell us about your group please." rows="10" cols="50"></textarea></label></li>
           <br>
-          <button type="submit" value="submit"><strong>Submit!<strong></button>
+          <li><button type="submit" value="submit"><strong>Submit!<strong></button></li>
         </form>
+        </ul>
       </div>
         
     <%else%>
@@ -25,7 +27,7 @@
         <h2>Wait just a minute...</h2>
         <p> I do apologize but you cannot create a group while you are in a group. Creators must be apart of their group (or at least when they first start it). Since you can only be a member of one group at a time. You would need to leave your current group first.</p>
         <h3>Leave Group?</h3>
-        <p>To leave your group please visit their page and click the "Leave" button on the groups page. The group you are currently apart of is <a href="/groups/<%=@user.group.id%>"><%=@user.group.name%></a> .
+        <p>To leave your group please visit their page and click the "Leave" button on the groups page. The group you are currently apart of is <a href="/groups/<%=current_user.group.id%>"><%=current_user.group.name%></a> .
       </div>
         
     <%end%>

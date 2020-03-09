@@ -1,22 +1,27 @@
 <div class="container">
     <div class="col-md-8 col-md-offset-2">
-      <h1>Welcome, <%=@user.name%> </h1>
+      <h1><strong>Welcome <em><%=current_user.name%></strong></em>!</h1>
       <div class="content">
-        <% if @user.group == nil %>
-          <p>It looks as though you have not joined a group! Why not <a href="/groups/new">create a new group</a> or <a href="/groups/index">join a group</a> made by someone in the community.</p>
+        <% if current_user.group == nil %>
+          <h2>It looks as though you have not joined a group!</h2>
+          <p>Why not <a href="/groups/new">create a new group</a> or <a href="/groups">join a group</a> made by someone in the community.</p>
         <% else %>
-          <p>The group you belong to is</p>
+          <h2>The group you belong to is</h2>
             <ul>
-              <li><a href="/groups/<%=@user.group.id%>"><b><%=@user.group.name%><b></a></li><br>
-            <li><b>Bio:</b></li>
-            <li><%=@user.group.bio %><b></li>
+              <li><a href="/groups/<%=current_user.group.id%>"><%=current_user.group.name%></a></li>
+              <li><em><strong><em>Bio: </em></strong></em></li>
+              <li><%=current_user.group.bio %></li>
           </ul>
         <%end%>
       </div>
     <div class="sidebar">
-      <h3>Most recent post from your group</h3>
+      <h3>Your most recent post are</h3>
       <ul>
-          <li><b></li>
+          <li><%users_post.each do |post|%></li>
+          <li><%=post.published%></li>
+          <li><%=post.content%></li>
+          <br>
+          <%end%>
       </ul>
     </div>
   </div>
