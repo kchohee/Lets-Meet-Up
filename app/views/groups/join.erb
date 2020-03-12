@@ -3,7 +3,13 @@
         <h1><strong>Before we go forward....</strong></h1>
         <div class="content">
             <h2><strong><em>Attention</em></strong></h2>
-            <p>By selecting "Join" you are going to be joining this group. Any group you were apart of before this group you will leave.</P>
+            <p> You are about to join <%=current_group.name%>.
+            <%if current_user.group == []%>
+                By selecting "Join" you are going to be joining this group. Any group you were apart of before this group you will leave.
+            <%else%>
+                Your current groups is <%=current_user.group.name%>.y selecting "Join" you are going to be joining this group. Any group you were apart of before this group you will leave.
+            <%end%>
+            </P>
             <form action="/groups/<%= current_group.id %>/join" method="post">
                 <input type="hidden" name="_method" value="patch">
                 <button type="submit" value="submit"> Join!</button>

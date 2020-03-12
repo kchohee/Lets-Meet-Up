@@ -35,10 +35,13 @@ class UsersController < ApplicationController
   
   post '/login' do
       if valid_login?
-        login_session
+        if valid_user?
         redirect "/users/#{current_user.id}"
-     else
+      else
        erb :"/users/error"
+      end
+    else
+      "/login"
     end
   end
 

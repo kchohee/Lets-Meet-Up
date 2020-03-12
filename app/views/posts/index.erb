@@ -1,22 +1,49 @@
 <div class="container"> 
     <div class="col-md-8 col-md-offset-2">
-        <h1><strong>Post</strong></h1>
-        <div class="content">
-            <h2>Here are all the post!</h2>
-            <ul>
-                <% all_post.each do |post|%>
-                <li><%=post.published%></li>
-                <li><strong><em><%=post.user.name%></em></strong></li>
-                <li><strong><em>Content: </em></strong><%=post.content%></li>
-                
-                <% if post.user == current_user %>
-                <li><a href="/posts/<%post.id%>/edit">Edit</a><li>
-                <li><a href="/posts/<%post.id%>/delete">Delete</a></li>
+        <h1><strong>Lets-Meet</strong></h1>
+        <% if user_posts == [] %>
+            <div class="content">
+                <h2>You don't have any post</h2>
+                <p>I do apologize but at this time is looks as though you have no groups currently.</p>p>Go ahead and write a post on how you are feeling today. Maybe something you would like to talk about. It is all okay! </p>
                 <br>
-                <%end%>
-                
-                <%end%>
+                <h3><strong><em>Create a Post </strong></em></h3>
+                <ul>
+                <form action="/posts/new" method="post">
+                    <li><label for="content"><strong><em>Content: </em></strong></label></li>
+                    <br>
+                    <li><textarea type="text" id="content" name="content" placeholder="Enter what you would like your post to say!" rows="10" cols="50"></textarea></label></li>
+                    <br>
+                    <li><button type="submit" value="submit"><strong>Post!<strong></button></li>
+                </form>
                 </ul>
-        </div>
+                </div>
+               <%else%>
+               <div class="content">
+                    <h2>Here are all your posts!</h2>
+                    <ul>
+                        <% user_posts.each do |post|%>
+                            <li><%=post.published%></li>
+                            <li><strong><em><%=post.user.name%></em></strong></li>
+                            <li><strong><em>Content: </em></strong><%=post.content%></li>
+                                <% if post.user == current_user %>
+                                    <li><a href="/posts/<%post.id%>/edit">Edit</a></li>
+                                    <li><a href="/posts/<%post.id%>/delete">Delete</a></li>
+                                <%end%>
+                            <br>
+                        <%end%>
+                        <div class="sidebar">
+                            <h3>Create a Post </h3>
+                            <ul>
+                            <form action="/posts/new" method="post">
+                                <li><label for="content"><strong><em>Content: </em></strong></label></li>
+                                <br>
+                                <li><textarea type="text" id="content" name="content" placeholder="Enter what you would like your post to say!" rows="10" cols="50"></textarea></label></li>
+                                <br>
+                                <li><button type="submit" value="submit"><strong>Post!<strong></button></li>
+                            </form>
+                            </ul>
+                        </div>
+                </div>
+                <%end%>
     </div>
 </div>

@@ -23,6 +23,9 @@ class ApplicationController < Sinatra::Base
       user ||= User.find(session[:user_id]) if session[:user_id]
     end
   end
+  def curr_user 
+    user = User.find_by()
+  end
   # post helpers
   def all_post
     posts = Post.all
@@ -30,8 +33,8 @@ class ApplicationController < Sinatra::Base
   def last_post
     post = Post.all.last
   end
-  def current_posts
-    post = Post.find_by(params[:id])
+  def current_post
+    post = Post.find_by(:id=>params[:id])
   end
   def users_post
     post = Post.all.where(:user_id=> current_user)
@@ -79,9 +82,14 @@ class ApplicationController < Sinatra::Base
       post.save
     end
     # update helpers
-    def login_session
-      user = User.find_by(:email => params[:email])
-      session[:user_id] = user.id
+    def valid_user?
+      @user = User.find_by(:email => params[:email])
+      if @user != nil
+        session[:user_id] = @user.id
+        return true
+      else
+        return false
+      end
     end
     def update_group
       group = Group.find_by(params[:id])
@@ -90,8 +98,8 @@ class ApplicationController < Sinatra::Base
       group.save
     end
     def join_group
+      group = Group.find_by(:id=>session[:id])
       user = User.find_by(:id=>session[:user_id])
-      group = Group.find_by(params[:id])
       user.group = group
       user.save
     end
@@ -101,7 +109,7 @@ class ApplicationController < Sinatra::Base
     end
     def update_post
       user = User.find_by(:id=>session[:user_id])
-      post = Post.find_by(:id=>params[:id])
+      post = Post.find_by(params[:post_id])
       post.content = params[:content]
       post.save
     end
@@ -112,8 +120,23 @@ class ApplicationController < Sinatra::Base
     end
     def users_post?
       user = User.find_by(:id=>session[:user_id])
-      post = Post.find_by(:id=>params[:id])
+      post = Post.find_by(params[:post_id])
       post.user == user
     end
-
+    def groups_post
+      members_post = []
+      Post.all.each do |post|
+        if post.user == current_group.users
+          members_post << post
+        end
+      end
+    end
+    def user_posts
+      users_posts = []
+      Post.all.each do |post|
+        if post.user == current_user
+          users_posts << post
+        end
+      end
+    end
 end

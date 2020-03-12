@@ -2,10 +2,10 @@
     <div class="col-md-8 col-md-offset-2">
         <h1><strong>Lets-Meet</strong></h1>
         <div class="content">
-            <h2>Create a post</h2>
-            <p>We are glad to have you joining the family! Here we offer comunity with a focus. Create an account to join like minded indiviuals near you!</p>
+            <h2>Hey <%current_user.id%>,</h2>
+            <p>Go ahead and write a post on how you are feeling today. Maybe something you would like to talk about. It is all okay! </p>
             <br>
-            <h3><strong><em>Sign up: </strong></em></h3>
+            <h3><strong><em>: </strong></em></h3>
             <ul>
             <form action="/posts/new" method="post">
                 <li><label for="content"><strong><em>Content: </em></strong></label></li>
@@ -14,6 +14,7 @@
                 <br>
                 <li><button type="submit" value="submit"><strong>Post!<strong></button></li>
             </form>
+            </ul>
         </div>
     </div>
 </div>

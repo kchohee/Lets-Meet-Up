@@ -2,13 +2,36 @@
     <div class="col-md-8 col-md-offset-2">
         <h1>Welcome to <%= current_user.group.name%> <%=current_user.name%>,</h1>
         <div class="content">
-            <h3><strong>Bio:</strong><h3>
+            <h3><strong>Bio:</strong></h3>
             <p><%=current_user.group.bio%></p>
+
+            <h3><strong>Post: </strong></h3>
+            <ul>
+                <% groups_post.each do |post| %>
+                <li><%=post.published%></li>
+                <li><strong><em><%=post.user.name%></strong></em></li>
+                <li><strong><em><%=post.content%></strong></em></li>
+                <% if current_user == post.user%>
+                    <li><a href="/post/<%post.id%>/edit">Edit</a></li>
+                <%end%>
+                <br>
+                <%end%>
+            </ul>
+            <br>
+            <br>
             <p>We believe that all users should be able to edit the groups information. We do ask that you be considerate and colaborate with you members before doing so however. If you would like to edit the groups name or bio <a href="/groups/<%=current_group.id%>/edit">click here.</a></p>
             <form action="/groups/<%= current_user.group.id %>/leave" method="post">
                 <input type="hidden" name="_method" value="patch">
                 <button type="submit" value="submit"> Leave group</button>
             </form>
+        </div>
+        <div class="sidebar">
+            <h3><strong>Members: </strong></h3>
+            <ul>
+                <%current_group.users.all.each do |member| %>
+                <li><strong><%= member.name %></strong></li>
+                <%end%>
+            </ul>
         </div>
     </div>
 </div>
