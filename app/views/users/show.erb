@@ -12,10 +12,14 @@
               <li><em><strong><em>Bio: </em></strong></em></li>
               <li><%=current_user.group.bio %></li>
           </ul>
-        <%end%>
+          <%end%>
       </div>
     <div class="sidebar">
-      <h3>Your most recent post are</h3>
+      <% if current_user.group != nil %>
+      <h3>Your most recent post:</h3>
+      <% if users_post = []%>
+      <p> You have not created a post at this time. If you would like to create one at this time please <a href="/posts/new">click here</a>
+      <%else%>
       <ul>
           <li><%users_post.each do |post|%></li>
           <li><%=post.published%></li>
@@ -23,5 +27,7 @@
           <br>
           <%end%>
       </ul>
+      <%end%>
+      <%end%>
     </div>
   </div>

@@ -12,7 +12,7 @@
                 <li><strong><em><%=post.user.name%></strong></em></li>
                 <li><strong><em><%=post.content%></strong></em></li>
                 <% if current_user == post.user%>
-                    <li><a href="/post/<%post.id%>/edit">Edit</a></li>
+                    <li><a href="/posts/<%=post.id%>/edit">Edit</a></li>
                 <%end%>
                 <br>
                 <%end%>

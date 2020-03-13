@@ -26,8 +26,8 @@
                             <li><strong><em><%=post.user.name%></em></strong></li>
                             <li><strong><em>Content: </em></strong><%=post.content%></li>
                                 <% if post.user == current_user %>
-                                    <li><a href="/posts/<%post.id%>/edit">Edit</a></li>
-                                    <li><a href="/posts/<%post.id%>/delete">Delete</a></li>
+                                    <li><a href="/posts/<%=post.id%>/edit">Edit</a></li>
+                                    <li><a href="/posts/<%=post.id%>/delete">Delete</a></li>
                                 <%end%>
                             <br>
                         <%end%>

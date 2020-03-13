@@ -17,11 +17,12 @@ class UsersController < ApplicationController
 
   post "/signup" do
     if valid_login?
-      user_created
-      redirect "/login"
-    else
-      erb :"/users/error"
+      user = user_created
+      if user.valid?
+        redirect "/login"
+      end
     end
+    erb :"/users/error"
   end
 
 

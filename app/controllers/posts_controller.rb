@@ -18,8 +18,8 @@ end
 post "/posts/new" do
     if valid_post?
         if logged_in?
-            create_post
-            redirect "/posts/#{current_post.id}"
+            post = create_post
+            redirect "/posts/#{post.id}"
         else
             erb :"posts/error"
         end
@@ -28,7 +28,7 @@ post "/posts/new" do
     end
 end
 
-get "/posts/:id" do
+get "/posts/:post_id" do
     if logged_in?
         erb :"/posts/show"
      else
@@ -36,7 +36,7 @@ get "/posts/:id" do
      end
 end
 
-get "/posts/:id/edit" do
+get "/posts/:post_id/edit" do
     if logged_in?
         erb :"/posts/edit"
     else
@@ -44,16 +44,16 @@ get "/posts/:id/edit" do
     end
 end
 
-patch "/posts/:id/edit" do
+patch "/posts/:post_id/edit" do
     if current_post.user != current_user
         erb :'/posts/error'
     else
-        update_post
+        post = update_post
         redirect "/posts/#{current_post.id}"
     end
 end
 
-get "/posts/:id/delete" do
+get "/posts/:post_id/delete" do
     if logged_in?
         erb :"/posts/delete"
     else
@@ -61,10 +61,10 @@ get "/posts/:id/delete" do
     end
 end
 
-delete "/posts/:id/delete" do
+delete "/posts/:post_id/delete" do
     if logged_in?
         if users_post?
-            current_post.destroy
+            Post.destroy(params[:post_id])
             redirect "/posts"
         else
             erb :"/posts/error"
