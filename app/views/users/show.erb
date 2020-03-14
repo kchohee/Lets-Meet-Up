@@ -11,6 +11,10 @@
               <li><a href="/groups/<%=current_user.group.id%>"><%=current_user.group.name%></a></li>
               <li><em><strong><em>Bio: </em></strong></em></li>
               <li><%=current_user.group.bio %></li>
+              <form action="/groups/<%= current_user.group.id %>/leave" method="post">
+                <input type="hidden" name="_method" value="patch">
+                <button type="submit" value="submit"> Leave group</button>
+            </form>
           </ul>
           <%end%>
       </div>

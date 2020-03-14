@@ -7,9 +7,10 @@
 
             <h3><strong>Post: </strong></h3>
             <ul>
+            <li> <a href="/posts/new">Creat a post</a>
                 <% groups_post.each do |post| %>
-                <li><%=post.published%></li>
                 <li><strong><em><%=post.user.name%></strong></em></li>
+                <li><%=post.published%></li>
                 <li><strong><em><%=post.content%></strong></em></li>
                 <% if current_user == post.user%>
                     <li><a href="/posts/<%=post.id%>/edit">Edit</a></li>
@@ -19,7 +20,7 @@
             </ul>
             <br>
             <br>
-            <p>We believe that all users should be able to edit the groups information. We do ask that you be considerate and colaborate with you members before doing so however. If you would like to edit the groups name or bio <a href="/groups/<%=current_group.id%>/edit">click here.</a></p>
+            <p>We believe that all users should be able to edit the groups information. We do ask that you be considerate and collaborate with you members before doing so however, if you would like to edit the groups name or bio <a href="/groups/<%=current_group.id%>/edit">click here.</a></p>
             <form action="/groups/<%= current_user.group.id %>/leave" method="post">
                 <input type="hidden" name="_method" value="patch">
                 <button type="submit" value="submit"> Leave group</button>

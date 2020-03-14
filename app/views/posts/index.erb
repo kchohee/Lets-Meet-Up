@@ -3,10 +3,11 @@
         <h1><strong>Lets-Meet</strong></h1>
         <% if user_posts == [] %>
             <div class="content">
-                <h2>You don't have any post</h2>
-                <p>I do apologize but at this time is looks as though you have no groups currently.</p>p>Go ahead and write a post on how you are feeling today. Maybe something you would like to talk about. It is all okay! </p>
+                <h2>You don't have any posts.</h2>
+                <p>I do apologize but at this time is looks as though you have no posts currently.</p>
+                <p>Go ahead and write a post on how you are feeling today. Maybe something you would like to talk about. It is all okay! </p>
                 <br>
-                <h3><strong><em>Create a Post </strong></em></h3>
+                <h3><strong><em>Create a Post: </strong></em></h3>
                 <ul>
                 <form action="/posts/new" method="post">
                     <li><label for="content"><strong><em>Content: </em></strong></label></li>
@@ -19,7 +20,7 @@
                 </div>
                <%else%>
                <div class="content">
-                    <h2>Here are all your posts!</h2>
+                    <h2>Here are all of your posts!</h2>
                     <ul>
                         <% user_posts.each do |post|%>
                             <li><%=post.published%></li>

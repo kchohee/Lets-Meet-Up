@@ -31,12 +31,15 @@ class ApplicationController < Sinatra::Base
   # post helpers
   def all_post
     posts = Post.all
+    return posts
   end
   def last_post
     post = Post.all.last
+    return post
   end
   def current_post
     post = Post.find_by(:id => params[:post_id])
+    return post
   end
   def users_post
     post = Post.all.where :user_id=> current_user.id
@@ -45,9 +48,11 @@ class ApplicationController < Sinatra::Base
   # GROUPS HELPERS
     def all_groups
       group = Group.all
+      return group
     end
     def last_group
       group = Group.all.last
+      return group
     end
     def current_group
       group = Group.find_by id: params[:group_id]

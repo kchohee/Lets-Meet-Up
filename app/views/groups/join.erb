@@ -7,7 +7,7 @@
             <%if @user.group == nil%>
                 By selecting "Join" you are going to be joining this group. Any group you were apart of before this group you will leave.
             <%else%>
-                Your current groups is <%=@user.group.name%>. By selecting "Join" you are going to be joining this group. Any group you were apart of before this group you will leave.
+                Your current group is <%=@user.group.name%>. By selecting "Join" you are going to be joining this group. Any group you were apart of before this group you will leave.
             <%end%>
             </P>
             <form action="/groups/<%= @group.id %>/join" method="post">
