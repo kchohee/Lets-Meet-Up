@@ -9,8 +9,8 @@
     <p>You can only be a member of <strong><em>one</em></strong> group and can only view a groups page if you are a member. You do have the ability to leave groups and join new ones as you wish. Please keep that in mind as it is best to look over all options before you join!</p>
       <%all_groups.each do |group|%>
         <ul>
-        <li><strong><em><%=group.name%></em></strong></li>
-        <li><strong><em>Bio: </em></strong><%=group.bio%></li>
+        <li><strong><%=group.name%></strong></li>
+        <li><strong>Bio: </strong><em><%=group.bio%></em></li>
         <br>
         </ul>
       <%end%>
@@ -42,8 +42,8 @@
        <br>
         <% all_groups.each do |group|%>
           <ul>
-            <li><em><strong><%=group.name%></strong></em> <a href="/groups/<%=group.id%>/join">Join!</a></li>
-            <li><strong><em>Bio: </strong></em> <%=group.bio %></li>
+            <li><strong><%=group.name%></strong> <a href="/groups/<%=group.id%>/join">Join!</a></li>
+            <li><strong>Bio: </strong><em> <%=group.bio %></em></li>
             <br>
           </ul>
 

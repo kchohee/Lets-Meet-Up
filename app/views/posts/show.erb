@@ -1,25 +1,29 @@
 <div class="container"> 
     <div class="col-md-8 col-md-offset-2">
         <h1>Post details: </h1>
+        <br>
         <div class="content">
             <ul>
                 <li><%=current_post.published%></li>
-                <li><strong><em><%=current_post.user.name%></em></strong></li>
-                <li><strong><em>Content: </em></strong><%=current_post.content%></li>
+                <li><strong><%=current_post.user.name%></strong></li>
+                <br>
+                <li><strong>Content: </strong><em><%=current_post.content%></em></li>
                 
                 <% if current_post.user == current_user %>
                 <li><a href="/posts/<%=current_post.id%>/edit">Edit</a>
                 <a href="/posts/<%=current_post.id%>/delete">Delete</a></li>
                 <br>
                 <%end%>
-
+                <br>
+                <li><a href="/groups/<%=current_user.group.id%>">Group page</a></li>
+                <li><a href="/users/<%=current_user.id%>">Your profile</a></li>
             </ul>
         </div>
         <div class="sidebar">
             <h2>The newest group created:</h2>
             <ul>
                 <li><%=last_group.name%></li>
-                <li><li><strong><em>Bio: </em></strong><%=last_group.bio%></li>
+                <li><li><strong>Bio: </strong><em><%=last_group.bio%></em></li>
                 <br>
             </ul>
         </div>

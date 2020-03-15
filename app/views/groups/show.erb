@@ -6,18 +6,24 @@
             <p><%=current_user.group.bio%></p>
 
             <h3><strong>Post: </strong></h3>
+            <% if groups_post == [] %>
+            <p>There are no post in your group at this time. To create a post please <a href="/posts/new">click here</a></p>
+            <%else%>
             <ul>
-            <li> <a href="/posts/new">Creat a post</a>
                 <% groups_post.each do |post| %>
-                <li><strong><em><%=post.user.name%></strong></em></li>
                 <li><%=post.published%></li>
-                <li><strong><em><%=post.content%></strong></em></li>
+                <li><strong><%=post.user.name%></strong></li>
+                <li><em><%=post.content%></em></li>
                 <% if current_user == post.user%>
-                    <li><a href="/posts/<%=post.id%>/edit">Edit</a></li>
+                    <li><a href="/posts/<%=current_post.id%>/edit">Edit</a>
+                <a href="/posts/<%=current_post.id%>/delete">Delete</a></li>
                 <%end%>
                 <br>
+                <br>
                 <%end%>
+                <li> <a href="/posts/new">Click here to create a post!</a></li>
             </ul>
+            <%end%>
             <br>
             <br>
             <p>We believe that all users should be able to edit the groups information. We do ask that you be considerate and collaborate with you members before doing so however, if you would like to edit the groups name or bio <a href="/groups/<%=current_group.id%>/edit">click here.</a></p>

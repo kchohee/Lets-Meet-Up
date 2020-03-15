@@ -6,11 +6,11 @@
             <ul>
             <form action="/groups/<%=current_group.id%>/edit" method="post">
                 <li><input type="hidden" name="_method" value="patch"></li>
-                <li><label for="name"><strong><em>Name: </em></strong> </li>
+                <li><label for="name"><strong>Name: </strong> </li>
                 <br>
                 <li><input type="text" id="name" name="name" value="<%=current_group.name%>"></label></li>
                 <br>
-                <li><label for="bio"><strong><em>Bio: </em></strong></li>
+                <li><label for="bio"><strong>Bio: </strong></li>
                 <br>
                 <li><textarea type="text" id="bio" name="bio" rows="10" cols="50"><%=current_group.bio%></textarea></label></li>
                 <br>

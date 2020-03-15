@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 get "/posts" do
     if logged_in?
         erb :"/posts/index"
-    else 
+    else
         redirect "/login"
     end
 end
@@ -38,7 +38,11 @@ end
 
 get "/posts/:post_id/edit" do
     if logged_in?
+        if current_post.user == current_user
         erb :"/posts/edit"
+        else
+            erb :'/posts/error'
+        end
     else
         redirect "/login"
     end
@@ -55,7 +59,11 @@ end
 
 get "/posts/:post_id/delete" do
     if logged_in?
+        if current_post.user == current_user
         erb :"/posts/delete"
+        else
+            erb :'/posts/error'
+        end
     else
         redirect "/login"
     end

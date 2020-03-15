@@ -151,7 +151,8 @@ class ApplicationController < Sinatra::Base
           members_post << post
         end
       end
-      return members_post
+      members_post_sort = members_post.sort_by {|post| post.published}
+      return members_post_sort
     end
     def user_posts
       users_posts = []
@@ -160,5 +161,7 @@ class ApplicationController < Sinatra::Base
           users_posts << post
         end
       end
+      users_post_sort = users_post.sort_by {|post| post.published}
+      return users_post_sort
     end
 end

@@ -9,8 +9,8 @@
           <h2>The group you belong to is</h2>
             <ul>
               <li><a href="/groups/<%=current_user.group.id%>"><%=current_user.group.name%></a></li>
-              <li><em><strong><em>Bio: </em></strong></em></li>
-              <li><%=current_user.group.bio %></li>
+              <li><strong>Bio: </strong></li>
+              <li><em><%=current_user.group.bio %></em></li>
               <form action="/groups/<%= current_user.group.id %>/leave" method="post">
                 <input type="hidden" name="_method" value="patch">
                 <button type="submit" value="submit"> Leave group</button>
@@ -20,14 +20,14 @@
       </div>
     <div class="sidebar">
       <% if current_user.group != nil %>
-      <h3>Your most recent post:</h3>
-      <% if users_post = []%>
+      <h3>Your posts:</h3>
+      <% if users_post == nil%>
       <p> You have not created a post at this time. If you would like to create one at this time please <a href="/posts/new">click here</a>
       <%else%>
       <ul>
           <li><%users_post.each do |post|%></li>
           <li><%=post.published%></li>
-          <li><%=post.content%></li>
+          <li><em><%=post.content%></em></li>
           <br>
           <%end%>
       </ul>

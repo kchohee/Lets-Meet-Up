@@ -6,7 +6,7 @@
             <ul>
             <form action="/posts/<%=current_post.id%>/edit" method="post">
                 <li><input type="hidden" name="_method" value="patch"></li>
-                <li><label for="content"><strong><em>Content: </em></strong</label></li>
+                <li><label for="content"><strong>Content: </strong</label></li>
                 <br>
                 <li><textarea type="text" id="content" name="content" placeholder="Enter what you would like your post to say!" rows="10" cols="50"><%=current_post.content%></textarea></label></li>
                 <br>
