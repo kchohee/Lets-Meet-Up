@@ -72,14 +72,6 @@ class ApplicationController < Sinatra::Base
       !params[:content].empty?
     end
     # Create helpers
-    def user_created
-      user = User.create(params)
-      if user.valid? 
-        user.save
-        @my_user = user
-      end
-      return user
-    end
     def create_group
       group = Group.create(params)
       if group.valid?

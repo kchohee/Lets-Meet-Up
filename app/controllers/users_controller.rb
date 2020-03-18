@@ -17,9 +17,11 @@ class UsersController < ApplicationController
 
   post "/signup" do
     if valid_login?
-      user = user_created
-      if user.valid?
-        redirect "/login"
+      user = User.new(params)
+      if user.valid? 
+        user.save
+        session[:user_id] = user.id
+        redirect "/users/#{user.id}"
       end
     end
     erb :"/users/error"
