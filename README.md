@@ -6,9 +6,14 @@ Once you have created an account you can join a group or create one. Through tho
 
 Keep in mind that you can only be apart of one group at a time. You are free to leave and join as much as you want. However, we feel that belonging to many groups takes away from interaction. We want you to be active with your members instead of "lurkers."
 
-## Getting Started &Prerequisites
+## Getting Started & Prerequisites
 
--fork and clone --> https://github.com/kchohee/Lets-Meet-Up.git -cd to directory containing git clone -in the terminal, run "gem install bundler" -run "bundle install" -run "shotgun" an the use any browser to visit the site. Once there either sign up or login to use "Lets-Meet"
+-fork and clone --> https://github.com/kchohee/Lets-Meet-Up.git 
+-cd to directory containing git clone -in the terminal
+-run "gem install bundler" 
+-run "bundle install" 
+-run "shotgun" and then use any browser to visit the site
+Once there either sign up or login to use "Lets-Meet"
 
 ## License
 
