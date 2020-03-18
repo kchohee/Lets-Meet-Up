@@ -1,6 +1,6 @@
 <div class="container"> 
     <div class="col-md-8 col-md-offset-2">
-        <h1>Welcome to <%= current_user.group.name%> <%=current_user.name%>,</h1>
+        <h1>Welcome to "<%= current_user.group.name%>" <%=current_user.name%>!</h1>
         <div class="content">
             <h3><strong>Bio:</strong></h3>
             <p><%=current_user.group.bio%></p>

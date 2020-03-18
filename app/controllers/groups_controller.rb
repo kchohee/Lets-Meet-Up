@@ -59,6 +59,7 @@ class GroupsController < ApplicationController
   patch "/groups/:group_id/join" do
      if logged_in? 
       user = join_group
+      Post.where(:user_id => current_user.id ).destroy_all
       redirect "/groups/#{current_user.group.id}"
      else
       redirect "/login"
