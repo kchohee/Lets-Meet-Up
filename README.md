@@ -8,7 +8,7 @@ Keep in mind that you can only be apart of one group at a time. You are free to 
 
 ## Getting Started & Prerequisites
 
--fork and clone --> https://github.com/kchohee/Lets-Meet-Up.git 
+-fork and clone --> https://github.com/MarieHughes93/Lets-Meet-Up.git 
 -cd to directory containing git clone -in the terminal
 -run "gem install bundler" 
 -run "bundle install" 
@@ -25,4 +25,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Authors
 
-* **Cho (Marie) Hughes** -  [Let's Meet](https://github.com/kchohee/Lets-Meet-Up)
+* **Marie Hughes** -  [Let's Meet](https://github.com/MarieHughes93/Lets-Meet-Up)
